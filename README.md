@@ -56,6 +56,14 @@ Both were found by pointing it at real repositories and reading the output.
 
 **2. A report must not repeat the secret it found.** The token check shows the file and the first eight characters, never the whole string. A security report that leaks the thing it warned you about is a second leak.
 
+**3. It cannot tell a fixture from a credential, so it does not pretend to.** Every secret scanner hits this: the test data and the real key are the same characters. Instead of a hidden allowlist in a config file, a line can carry a marker:
+
+```python
+FAKE_PAT = "github_pat_11ABC..."  # steward:allow-secret (not a credential)
+```
+
+The suppression lives in the diff, where a reviewer sees it, and it applies to that line only. This exact problem is how steward failed its own audit the first time it ran in CI — it accused its own tests of leaking a key.
+
 ---
 
 ## Use it

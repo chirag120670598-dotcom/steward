@@ -230,10 +230,18 @@ def check_junk(repo: Path, name: str) -> list[Finding]:
     return [Finding(name, "junk", OK, "no junk tracked")]
 
 
+# A line carrying this marker is skipped. A scanner cannot tell a test fixture
+# from a live credential -- both are the same characters -- so the decision is
+# handed to a person and the evidence is left in the file, in the diff, for
+# whoever reviews it next.
+ALLOW_MARKER = "steward:allow-secret"
+
+
 def check_secrets(repo: Path, name: str) -> list[Finding]:
     """The check that matters most, because a leaked token is the one mistake
     that cannot be undone by committing a fix."""
     hits = []
+    suppressed = 0
     for rel in tracked_files(repo):
         path = repo / rel
         if not path.is_file():
@@ -241,14 +249,20 @@ def check_secrets(repo: Path, name: str) -> list[Finding]:
         body = _read(path)
         if not body:
             continue
-        for pattern, label in SECRET_PATTERNS:
-            for match in pattern.finditer(body):
-                fragment = match.group(0)
-                hits.append(f"{rel}: {label} ({fragment[:8]}…)")
+        for line in body.splitlines():
+            if ALLOW_MARKER in line:
+                if any(p.search(line) for p, _ in SECRET_PATTERNS):
+                    suppressed += 1
+                continue
+            for pattern, label in SECRET_PATTERNS:
+                for match in pattern.finditer(line):
+                    hits.append(f"{rel}: {label} ({match.group(0)[:8]}…)")
     if hits:
         return [Finding(name, "secrets", FAIL, f"{len(hits)} possible secret(s) committed",
                         "; ".join(hits[:5]))]
-    return [Finding(name, "secrets", OK, "no secret-shaped strings in tracked files")]
+    note = (f"{suppressed} marked as not a secret by a person"
+            if suppressed else "no secret-shaped strings in tracked files")
+    return [Finding(name, "secrets", OK, note)]
 
 
 def check_size(repo: Path, name: str, limit: int = 2_000_000) -> list[Finding]:

@@ -43,6 +43,11 @@ def make_repo(files: dict[str, str], git: bool = True, commit: bool = True) -> P
     return root
 
 
+# One fixture token for the whole file. It carries the marker so that running
+# steward on itself does not report its own test data as a leak -- which is
+# exactly what happened the first time this ran in CI.
+FAKE_PAT = "github_pat_11ABCDEFG0123456789_abcdefghij"  # steward:allow-secret (not a credential)
+
 HEALTHY = {
     "README.md": "# A project\n\n" + ("This does a thing. " * 40),
     "LICENSE": "Apache License\n",
@@ -90,17 +95,36 @@ class TestChecks(unittest.TestCase):
 
     def test_a_committed_token_is_a_failure(self):
         """The one mistake a later commit cannot undo."""
-        repo = make_repo({**HEALTHY, "notes.md": "token: github_pat_11ABCDEFG0123456789_abcdefghij"})
+        repo = make_repo({**HEALTHY, "notes.md": f"token: {FAKE_PAT}"})
         finding = check_secrets(repo, "x")[0]
         self.assertEqual(finding.level, FAIL)
         self.assertIn("notes.md", finding.detail)
 
-    def test_the_token_is_not_echoed_in_full(self):
-        secret = "github_pat_11ABCDEFG0123456789_abcdefghij"
-        repo = make_repo({**HEALTHY, "notes.md": secret})
+    def test_a_person_can_suppress_a_line_and_it_shows(self):
+        """A scanner cannot tell a fixture from a credential -- both are the same
+        characters -- so the decision belongs to a human. It has to be visible in
+        the file, in the diff, where a reviewer will see it, not buried in a
+        config nobody opens."""
+        marked = f'KEY = "{FAKE_PAT}"  # steward:allow-secret (fixture)'
+        repo = make_repo({**HEALTHY, "fixture.py": marked})
         finding = check_secrets(repo, "x")[0]
-        self.assertNotIn(secret, finding.detail, "the report must not leak what it found")
-        self.assertNotIn(secret, to_markdown(audit_all(repo.parent, False)))
+        self.assertEqual(finding.level, OK, finding.detail)
+        self.assertIn("marked as not a secret", finding.message)
+
+    def test_suppressing_one_line_does_not_suppress_the_file(self):
+        other = "ghp_" + "a" * 40
+        repo = make_repo({**HEALTHY, "notes.md":
+                          f'A = "{FAKE_PAT}"  # steward:allow-secret\nB = "{other}"\n'})
+        finding = check_secrets(repo, "x")[0]
+        self.assertEqual(finding.level, FAIL)
+        self.assertNotIn(FAKE_PAT, finding.detail)
+
+    def test_the_token_is_not_echoed_in_full(self):
+        repo = make_repo({**HEALTHY, "notes.md": f"token: {FAKE_PAT}"})
+        finding = check_secrets(repo, "x")[0]
+        self.assertNotIn(FAKE_PAT, finding.detail, "the report must not leak what it found")
+        page = to_markdown(audit_all(repo.parent, run_test_suite=False))
+        self.assertNotIn(FAKE_PAT, page)
 
     def test_clean_files_raise_nothing(self):
         repo = make_repo(HEALTHY)
