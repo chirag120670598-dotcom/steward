@@ -45,7 +45,11 @@ jobs:
           done
 
       - name: Look, without being asked
-        run: python -m steward --root repos --html site
+        # A finding is the product, not an error. Letting a red audit abort the
+        # job would mean the report about the broken thing never gets published.
+        run: |
+          python -m steward --root repos --html site || echo "audit finished with findings"
+          test -f site/index.html || (echo "no page was produced" && exit 1)
 
       - name: Save what it found
         run: |
@@ -76,4 +80,5 @@ jobs:
         with:
           python-version: "3.13"
       - run: python -m unittest discover -s tests -v
-      - run: python -m steward --root .. --only steward || true
+      - name: It must pass its own audit
+        run: python -m steward --root .. --only steward

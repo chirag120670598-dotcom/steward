@@ -133,60 +133,82 @@ def check_tests(repo: Path, name: str) -> list[Finding]:
     return [Finding(name, "tests", OK, f"{len(found)} test file(s)")]
 
 
-def _run(command: list[str], repo: Path, timeout: int) -> subprocess.CompletedProcess:
-    return subprocess.run(command, cwd=str(repo), capture_output=True,
-                          text=True, timeout=timeout)
+RUNNERS = (
+    ("unittest", ["-m", "unittest", "discover", "-s", "tests"]),
+    ("pytest", ["-m", "pytest", "-q", "tests"]),
+)
+
+
+def _classify(label: str, out: subprocess.CompletedProcess) -> tuple[str, str]:
+    """ok / fail / unusable, plus a sentence explaining which.
+
+    "unusable" is the important one. A module written for pytest cannot be
+    imported by unittest, and unittest's complaint looks exactly like a broken
+    repository. Calling that a failure is a confident claim about tests nobody
+    ran, so it is classified separately and never allowed to outvote a runner
+    that actually executed them.
+    """
+    blob = ((out.stdout or "") + (out.stderr or "")).strip()
+    lines = blob.splitlines()
+
+    if "No module named" in blob and ("pytest" in blob or "unittest" in blob):
+        return "unusable", f"{label} is not installed here"
+    if "NO TESTS RAN" in blob.upper() or out.returncode == 5:
+        return "unusable", f"{label} found no tests to run"
+    if "loader._FailedTest" in blob or "ModuleNotFoundError" in blob:
+        return "unusable", f"{label} could not import the test modules"
+
+    if out.returncode == 0:
+        summary = next((ln for ln in reversed(lines) if ln.startswith("Ran ")), "")
+        if not summary:
+            summary = next((ln for ln in reversed(lines)
+                            if " passed" in ln or "passed" in ln), "tests passed")
+        return "ok", f"{label}: {summary.strip()[:100]}"
+
+    first = next((ln for ln in lines
+                  if ln.startswith(("FAIL:", "ERROR:", "E   "))
+                  or " failed" in ln), lines[-1] if lines else "unknown")
+    return "fail", f"{label}: {first.strip()[:110]}"
 
 
 def run_tests(repo: Path, name: str, timeout: int = 600) -> list[Finding]:
-    """Run the suite, and be precise about *which* of three things happened.
+    """Run the suite under every runner that can run it, and report the best.
 
-    "The tests fail" and "I could not find a way to run the tests" look identical
-    from the outside and mean completely different things -- one is the
-    repository's problem, the other is this tool's ignorance. Reporting the
-    second as the first is the kind of confident wrongness this project exists to
-    avoid, so the distinction is made explicit.
+    Both runners are always tried. The first version stopped at the first
+    failure, so a pytest repository reported as broken by unittest never got
+    the chance to be run correctly -- and the report was wrong in the direction
+    that matters, since it accused working code.
     """
     if not (repo / "tests").is_dir():
         return []
 
-    tried = []
-    for label, command in (
-        ("unittest", [sys.executable, "-m", "unittest", "discover", "-s", "tests"]),
-        ("pytest", [sys.executable, "-m", "pytest", "-q", "tests"]),
-    ):
+    verdicts: list[tuple[str, str, str]] = []
+    for label, args in RUNNERS:
         try:
-            out = _run(command, repo, timeout)
+            out = subprocess.run([sys.executable, *args], cwd=str(repo),
+                                 capture_output=True, text=True, timeout=timeout)
         except subprocess.TimeoutExpired:
-            return [Finding(name, "tests-run", WARN, f"{label} did not finish in {timeout}s")]
+            verdicts.append((label, "unusable", f"{label} did not finish in {timeout}s"))
+            continue
         except OSError as exc:
-            tried.append(f"{label}: {exc}")
+            verdicts.append((label, "unusable", f"{label}: {exc}"))
             continue
+        verdicts.append((label, *_classify(label, out)))
 
-        blob = (out.stdout or "") + (out.stderr or "")
-        lines = blob.strip().splitlines()
-        ran_zero = "NO TESTS RAN" in blob.upper() or out.returncode == 5
+    passed = [v for v in verdicts if v[1] == "ok"]
+    if passed:
+        note = next((f"{v[0]}: {v[2]}" for v in verdicts
+                     if v[1] == "unusable"), "")
+        return [Finding(name, "tests-run", OK, passed[0][2], note)]
 
-        if out.returncode == 0 and not ran_zero:
-            summary = next((ln for ln in reversed(lines) if ln.startswith("Ran ")), "")
-            if not summary:
-                summary = next((ln for ln in reversed(lines)
-                                if " passed" in ln or "==" in ln), "tests passed")
-            return [Finding(name, "tests-run", OK, f"{label}: {summary.strip()[:100]}")]
-
-        if ran_zero:
-            tried.append(f"{label} found no tests")
-            continue
-
-        first = next((ln for ln in lines
-                      if ln.startswith(("FAIL", "ERROR", "E   "))
-                      or " failed" in ln), lines[-1] if lines else "unknown")
-        return [Finding(name, "tests-run", FAIL, f"tests fail ({label}): {first.strip()[:110]}",
-                        "  ".join(tried) if tried else "")]
+    failed = [v for v in verdicts if v[1] == "fail"]
+    if failed:
+        return [Finding(name, "tests-run", FAIL, failed[0][2],
+                        "; ".join(v[2] for v in verdicts if v[1] == "unusable"))]
 
     return [Finding(name, "tests-run", WARN,
                     "tests exist but this tool could not run them",
-                    "; ".join(tried) or "no runner found")]
+                    "; ".join(v[2] for v in verdicts))]
 
 
 def check_ci(repo: Path, name: str) -> list[Finding]:
