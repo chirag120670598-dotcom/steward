@@ -1,19 +1,18 @@
-# steward — 2026-10-24 17:02 UTC
+# steward — 2026-10-24 17:14 UTC
 
-**13 repositories · 103 ok · 1 warnings · 0 failures**
+**7 repositories · 60 ok · 2 warnings · 1 failures**
 
 | repository | state | what is wrong |
 |---|---|---|
-| `awaaz` | ok | — |
-| `bolcut` | ok | — |
-| `bolkhabar` | ok | — |
 | `concord` | ok | — |
-| `desi-dev-skills` | ok | — |
 | `docket` | ok | — |
-| `dukaandaar` | ok | — |
-| `gst-patra` | ok | — |
 | `hourglass` | ok | — |
-| `kharcha` | ok | — |
-| `naam` | warn | no CI workflow |
+| `naam` | warn | no CI workflow<br>tests exist but this tool could not run them |
 | `sprout` | ok | — |
+| `steward` | FAIL | 2 possible secret(s) committed |
 | `threshold` | ok | — |
+
+## Failures in detail
+
+- **steward** — 2 possible secret(s) committed
+  - `tests/test_steward.py: GitHub fine-grained PAT (github_p…); tests/test_steward.py: GitHub fine-grained PAT (github_p…)`

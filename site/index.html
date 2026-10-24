@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>steward — 13 repositories, checked without being asked</title>
+<title>steward — 7 repositories, checked without being asked</title>
 <style>
 :root{--bg:#0c0d0f;--panel:#14161a;--rule:#23262c;--ink:#e7e9ec;--ink2:#9aa2ad;
 --ok:#4ade80;--warn:#fbbf24;--fail:#f87171;--mono:ui-monospace,SFMono-Regular,Menlo,monospace}
@@ -41,12 +41,12 @@ li.fail{color:#fca5a5} li.ok{color:var(--ink2)}
 <p class="lede">A program that checks every repository it is pointed at, on a schedule,
 without anybody asking it to. This page is written by it, not by a person.</p>
 <div class="bar">
-  <span class="pill ok">103 ok</span>
-  <span class="pill warn">1 warnings</span>
-  <span class="pill fail">0 failures</span>
-  <span class="when">2026-10-24 17:02 UTC</span>
+  <span class="pill ok">60 ok</span>
+  <span class="pill warn">2 warnings</span>
+  <span class="pill fail">1 failures</span>
+  <span class="when">2026-10-24 17:14 UTC</span>
 </div>
-<table><tbody><tr class="ok"><td class="repo">awaaz</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">bolcut</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">bolkhabar</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">concord</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">desi-dev-skills</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">docket</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">dukaandaar</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">gst-patra</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">hourglass</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">kharcha</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="warn"><td class="repo">naam</td><td class="state">warn</td><td><ul><li class="warn">no CI workflow</li></ul></td></tr><tr class="ok"><td class="repo">sprout</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">threshold</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr></tbody></table>
+<table><tbody><tr class="ok"><td class="repo">concord</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">docket</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">hourglass</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="warn"><td class="repo">naam</td><td class="state">warn</td><td><ul><li class="warn">no CI workflow</li><li class="warn">tests exist but this tool could not run them<span class="d">unittest is not installed here; pytest is not installed here</span></li></ul></td></tr><tr class="ok"><td class="repo">sprout</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="fail"><td class="repo">steward</td><td class="state">FAIL</td><td><ul><li class="fail">2 possible secret(s) committed<span class="d">tests/test_steward.py: GitHub fine-grained PAT (github_p…); tests/test_steward.py: GitHub fine-grained PAT (github_p…)</span></li></ul></td></tr><tr class="ok"><td class="repo">threshold</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr></tbody></table>
 <h2>What it can and cannot decide</h2>
 <div class="two">
 <div class="box"><h3>Decides alone</h3><ul>
@@ -58,7 +58,7 @@ without anybody asking it to. This page is written by it, not by a person.</p>
 <li>anything that spends money or deploys</li>
 <li>what to do about a failure it reported</li></ul></div>
 </div>
-<p class="foot">Checked: awaaz, bolcut, bolkhabar, concord, desi-dev-skills, docket, dukaandaar, gst-patra, hourglass, kharcha, naam, sprout, threshold. Every line on this page
+<p class="foot">Checked: concord, docket, hourglass, naam, sprout, steward, threshold. Every line on this page
 comes from <code>steward.report</code>, and the page is rebuilt from the audit
 itself — nothing here is typed.</p>
 </div></body></html>
