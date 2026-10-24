@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "steward"
+version = "1.0.0"
+description = "A repository caretaker that runs on a schedule and needs no human in the loop."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Chirag" }]
+keywords = ["repository", "health", "audit", "automation", "ci", "zero-dependency"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+]
+dependencies = []
+
+[project.scripts]
+steward = "steward.cli:main"
+
+[project.urls]
+Homepage = "https://chirag120670598-dotcom.github.io/steward/"
+Source = "https://github.com/chirag120670598-dotcom/steward"
+
+[tool.setuptools]
+packages = ["steward"]

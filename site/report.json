@@ -1,0 +1,751 @@
+{
+  "when": "2026-10-24 17:02 UTC",
+  "checked": [
+    "awaaz",
+    "bolcut",
+    "bolkhabar",
+    "concord",
+    "desi-dev-skills",
+    "docket",
+    "dukaandaar",
+    "gst-patra",
+    "hourglass",
+    "kharcha",
+    "naam",
+    "sprout",
+    "threshold"
+  ],
+  "findings": [
+    {
+      "repo": "awaaz",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (10399 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "awaaz",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (7814 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "bolcut",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 3 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (9750 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "bolkhabar",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (9534 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "ci",
+      "level": "ok",
+      "message": "2 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "concord",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 0 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (8867 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "desi-dev-skills",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 3 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (14103 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "tests",
+      "level": "ok",
+      "message": "7 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "ci",
+      "level": "ok",
+      "message": "2 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "docket",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 0 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (11048 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "tests",
+      "level": "ok",
+      "message": "4 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "dukaandaar",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (11262 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "gst-patra",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (17078 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "tests",
+      "level": "ok",
+      "message": "17 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "hourglass",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 0 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (10866 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "kharcha",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (10361 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "ci",
+      "level": "warn",
+      "message": "no CI workflow",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "naam",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 1 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (14405 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "tests",
+      "level": "ok",
+      "message": "2 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "ci",
+      "level": "ok",
+      "message": "3 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "sprout",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 0 day(s) ago",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "readme",
+      "level": "ok",
+      "message": "README.md present (12116 chars)",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "license",
+      "level": "ok",
+      "message": "LICENSE present",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "tests",
+      "level": "ok",
+      "message": "13 test file(s)",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "ci",
+      "level": "ok",
+      "message": "1 workflow(s)",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "junk",
+      "level": "ok",
+      "message": "no junk tracked",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "secrets",
+      "level": "ok",
+      "message": "no secret-shaped strings in tracked files",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "size",
+      "level": "ok",
+      "message": "nothing oversized tracked",
+      "detail": ""
+    },
+    {
+      "repo": "threshold",
+      "check": "fresh",
+      "level": "ok",
+      "message": "last commit 0 day(s) ago",
+      "detail": ""
+    }
+  ],
+  "ok": 103,
+  "warn": 1,
+  "fail": 0
+}

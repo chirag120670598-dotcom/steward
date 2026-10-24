@@ -1,0 +1,74 @@
+name: steward
+
+# Wakes up every day, checks every repository, writes down what it found, and
+# goes back to sleep. Nobody asks it to. That is the whole product.
+
+on:
+  schedule:
+    - cron: "17 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: steward
+  cancel-in-progress: false
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Take a copy of every repository worth watching
+        run: |
+          mkdir -p repos
+          for name in concord sprout docket threshold hourglass naam steward; do
+            git clone --depth 1 --quiet "https://github.com/${{ github.repository_owner }}/$name.git" "repos/$name" \
+              && echo "cloned $name" || echo "could not clone $name"
+          done
+
+      - name: Look, without being asked
+        run: python -m steward --root repos --html site
+
+      - name: Save what it found
+        run: |
+          git config user.name "steward[bot]"
+          git config user.email "steward@users.noreply.github.com"
+          git add site
+          if git diff --cached --quiet; then
+            echo "nothing changed since yesterday"
+            exit 0
+          fi
+          SUMMARY=$(python -c "import re,pathlib;t=pathlib.Path('site/report.md').read_text();print(re.search(r'\*\*(.*?)\*\*',t).group(1))")
+          git commit -m "audit: $SUMMARY"
+          git push
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deploy
+        uses: actions/deploy-pages@v4
+
+  # The tool has to keep passing its own checks.
+  self:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: python -m unittest discover -s tests -v
+      - run: python -m steward --root .. --only steward || true
