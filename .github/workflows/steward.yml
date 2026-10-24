@@ -4,8 +4,13 @@ name: steward
 # goes back to sleep. Nobody asks it to. That is the whole product.
 
 on:
+  # Daily, on its own.
   schedule:
     - cron: "17 3 * * *"
+  # And on every push, so a change to the tool is published immediately rather
+  # than waiting for 03:17 UTC to find out whether it still works.
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
