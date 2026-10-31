@@ -41,12 +41,12 @@ li.fail{color:#fca5a5} li.ok{color:var(--ink2)}
 <p class="lede">A program that checks every repository it is pointed at, on a schedule,
 without anybody asking it to. This page is written by it, not by a person.</p>
 <div class="bar">
-  <span class="pill ok">61 ok</span>
+  <span class="pill ok">60 ok</span>
   <span class="pill warn">2 warnings</span>
-  <span class="pill fail">0 failures</span>
-  <span class="when">2026-10-30 10:03 UTC</span>
+  <span class="pill fail">1 failures</span>
+  <span class="when">2026-10-31 09:41 UTC</span>
 </div>
-<table><tbody><tr class="ok"><td class="repo">concord</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">docket</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">hourglass</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="warn"><td class="repo">naam</td><td class="state">warn</td><td><ul><li class="warn">no CI workflow</li><li class="warn">tests exist but this tool could not run them<span class="d">unittest is not installed here; pytest is not installed here</span></li></ul></td></tr><tr class="ok"><td class="repo">sprout</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">steward</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">threshold</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr></tbody></table>
+<table><tbody><tr class="ok"><td class="repo">concord</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="fail"><td class="repo">docket</td><td class="state">FAIL</td><td><ul><li class="fail">unittest: FAIL: test_upcoming_entries_come_first (test_docket.TestBuild.test_upcoming_entries_come_first)<span class="d">pytest is not installed here</span></li></ul></td></tr><tr class="ok"><td class="repo">hourglass</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="warn"><td class="repo">naam</td><td class="state">warn</td><td><ul><li class="warn">no CI workflow</li><li class="warn">tests exist but this tool could not run them<span class="d">unittest is not installed here; pytest is not installed here</span></li></ul></td></tr><tr class="ok"><td class="repo">sprout</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">steward</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr><tr class="ok"><td class="repo">threshold</td><td class="state">ok</td><td><ul><li class="ok">nothing to fix</li></ul></td></tr></tbody></table>
 <h2>What it can and cannot decide</h2>
 <div class="two">
 <div class="box"><h3>Decides alone</h3><ul>
